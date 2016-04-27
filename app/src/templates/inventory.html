@@ -1,0 +1,49 @@
+{{ define "content" }}
+<div class="page-header">
+    <h1>{{ .Title }}</h1>
+</div>
+
+<div class="container">
+    <div class="login-form-1">
+        <form id="login-form" class="text-left" method="post">
+            <div class="form-group">
+                <table><tr><td>
+                            <input type="string" class="form-control" id="name" name="name" placeholder="Search...."></td><td>
+                            <div class="radio">
+                                <label class="radio"><input type="radio" name="first_op" value="and">and</label>
+                                <label class="radio"><input type="radio" name="first_op" value="or">or</label>
+                            </div>
+                        </td><td>
+                            <input type="string" class="form-control" id="gt" name="gt" placeholder=">"></td><td>           					<div class="radio">
+                                <label class="radio"><input type="radio" name="second_op" value="and">and</label>
+                                <label class="radio"><input type="radio" name="second_op" value="or">or</label>
+                            </div>
+                        </td><td>
+                            <input type="string" class="form-control" id="lt" name="lt" placeholder="<"></td></tr></table>
+            </div>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+</div>
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range $order := .Tasks }}
+        <tr>
+            {{ range $col := $order }}
+            <td> {{ $col }} </td>
+            {{ end }}
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+</div>
+{{ end }}

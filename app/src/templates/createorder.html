@@ -1,0 +1,58 @@
+{{ define "content" }}
+<div class="text-left" style="padding:50px 0">
+	<div class="logo"><h2>{{ .Title }}</h2><div>
+			<div class="login-form-1">
+				<form id="login-form" class="text-left" method="post">
+					<div class="checkbox">
+						<label><input type="checkbox" name="newclient">New client</label>
+					</div>
+					<div class="form-group">
+						<label for="email">Email address:</label>
+						<input type="email" class="form-control" id="email" name="email" placeholder="required">
+					</div>
+					<div class="form-group">
+						<label for="fname">First Name</label>
+						<input type="string" class="form-control" name="fname" placeholder="can be empty if user exists">
+					</div>
+					<div class="form-group">
+						<label for="lname">Last Name</label>
+						<input type="string" class="form-control" name="lname" placeholder="can be empty if user exists">
+					</div>
+					<div class="form-group">
+						<label for="pwd">Password:</label>
+						<input type="password" class="form-control" name="pwd" placeholder="can be empty if user exists">
+					</div>
+					<div class="form-group">
+						<label for="phone">Phone:</label>
+						<input type="string" class="form-control" name="phone" placeholder="can be empty if user exists">
+					</div>
+					<div class="form-group">
+						<label for="dname">Device:</label>
+						<input type="string" class="form-control" name="device" placeholder="device description">
+					</div>
+					<div class="form-group">
+						<label for="serial">Serial:</label>
+						<input type="string" class="form-control" name="serial" placeholder="device serial e.g. IMEI">
+					</div>
+					<div class="form-group">
+						<label for="issue">Issue:</label>
+                        <textarea class="form-control" name="issuedescr" placeholder="What happened?"></textarea>
+					</div>
+					<div class="form-group">
+						<label><input type="checkbox" name="iswar"> Warranty</label>
+					</div>
+					<div class="form-group">
+						<label for="dtype">Device type:</label>
+						<div class="radio">
+						{{ range $v := .MData.DeviceTypes }}
+                        <label class="radio-inline"><input type="radio" name="dtype" value="{{ $v}}">{{ $v }}</label>
+						{{ end}}
+						</div>
+						</ul>
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+			</div>
+		</div>
+
+		{{ end }}

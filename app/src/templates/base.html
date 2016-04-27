@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Vlad's Service</title>
+    <link rel="stylesheet" href="{{ .Static }}css/bootstrap.min.css" type="text/css">
+    <link rel="shortcut icon" href="{{ .Static }}img/favicon.ico">
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Vlad's Service
+ </a>
+        </div>
+        <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+        {{ if ne .AccountType "Client" }}
+            {{ if (eq .AccountType "Reception") }}
+            <li><a href="/createorder">Create Order</a></li>
+            {{ end }}
+
+            {{ if .AccountType }}
+            <li><a href="/tasks">My tasks</a></li>
+            {{ end }}
+            {{ if eq .AccountType "Administration" }}
+            <li><a href="/inventory">Inventory</a></li>
+            {{ end }}
+        {{ end }}
+            <li><a href="/login">Login</a></li>
+        </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      {{ template "content" . }}
+    </div>
+  </body>
+</html>
